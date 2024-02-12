@@ -1,0 +1,393 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/services
+
+- Critical Services:
+    - Home Assistant:
+        icon: home-assistant.png
+        href: http://{{HOMEPAGE_VAR_HA_HOSTNAME}}:8123
+        description: Home automation - Raspberry Pi 4 Model B
+        siteMonitor: http://{{HOMEPAGE_VAR_HA_IP}}:8123
+        widget:
+            type: homeassistant
+            url: http://{{HOMEPAGE_VAR_HA_HOSTNAME}}:8123
+            key: {{HOMEPAGE_VAR_HA_KEY}}
+            custom:
+                # - state: sensor.total_power
+                # - state: sensor.total_energy_today
+                #   label: energy today
+                - template: "{{ states.switch|selectattr('state','equalto','on')|list|length }}"
+                  label: switches on
+                - state: weather.forecast_home
+                  label: wind speed
+                  value: "{attributes.wind_speed} {attributes.wind_speed_unit}"
+    - pfSense:
+        icon: pfsense.png
+        href: https://pfsense.{{HOMEPAGE_VAR_DOMAIN}}
+        description: DNS, DHCP, Wireguard - Protectli Vault FW2B - {{HOMEPAGE_VAR_PFSENSE_IP}}
+        siteMonitor: https://{{HOMEPAGE_VAR_PFSENSE_IP}}
+        widget:
+            type: pfsense
+            url: https://{{HOMEPAGE_VAR_PFSENSE_HOSTNAME}}
+            username: {{HOMEPAGE_VAR_PFSENSE_UN}}
+            password: {{HOMEPAGE_VAR_PFSENSE_PW}}
+            wan: igb0
+    - Nginx Proxy Manager:
+        icon: nginx-proxy-manager.png
+        href: https://{{HOMEPAGE_VAR_DOMAIN}}
+        description: For {{HOMEPAGE_VAR_DOMAIN}} subdomains
+        siteMonitor: http://{{HOMEPAGE_VAR_RPI01_IP}}
+        server: rpi-01 # Docker server defined in docker.yaml
+        container: nginx-proxy-manager-app-1
+        widget:
+            type: npm
+            url: https://{{HOMEPAGE_VAR_DOMAIN}}
+            username: {{HOMEPAGE_VAR_NPM_UN}}
+            password: {{HOMEPAGE_VAR_NPM_PW}}
+    - Proxmox:
+        icon: proxmox.png
+        href: "https://proxmox.{{HOMEPAGE_VAR_DOMAIN}}/#v1:0:=node%2Fproxmox:4:::::::"
+        description: VMs, LXCs - HP Elitedesk 800 G5 mini
+        siteMonitor: https://{{HOMEPAGE_VAR_PVE_IP}}:8006
+        widget:
+            type: proxmox
+            url: https://{{HOMEPAGE_VAR_PVE_IP}}:8006
+            username: {{HOMEPAGE_VAR_PVE_UN}}
+            password: {{HOMEPAGE_VAR_PVE_KEY}}
+            node: proxmox # optional
+    - Synology:
+        icon: synology-dsm.png
+        href: https://leviathan.{{HOMEPAGE_VAR_DOMAIN}}/#/signin
+        description: Media, Synology Drive, backups - DS1522+ - Leviathan
+        siteMonitor: http://{{HOMEPAGE_VAR_LEVI_IP}}:5000
+        widget:
+            type: diskstation
+            url: http://{{HOMEPAGE_VAR_LEVI_IP}}:5000
+            username: {{HOMEPAGE_VAR_SYN_UN}}
+            password: {{HOMEPAGE_VAR_SYN_PW}}
+            volume: volume_1 # optional
+    - Uptime Kuma:
+        icon: uptime-kuma.png
+        href: http://{{HOMEPAGE_VAR_POTATO_HOSTNAME}}:3001/dashboard
+        description: Service status - Libre AML-S905X-CC
+        siteMonitor: http://{{HOMEPAGE_VAR_POTATO_IP}}:3001
+        server: potato # Docker server defined in docker.yaml
+        container: uptime-kuma
+        widget:
+            type: uptimekuma
+            url: http://{{HOMEPAGE_VAR_POTATO_IP}}:3001
+            slug: ocean
+
+- Media:
+    - Plex:
+        icon: plex.png
+        href: https://plex.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: https://{{HOMEPAGE_VAR_PLEX_IP}}:32400
+        widget:
+            type: plex
+            url: http://{{HOMEPAGE_VAR_PLEX_IP}}:32400
+            key: {{HOMEPAGE_VAR_PLEX_KEY}} # see https://www.plexopedia.com/plex-media-server/general/plex-token/
+    - Overseerr:
+        icon: overseerr.png
+        href: https://overseerr.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: http://{{HOMEPAGE_VAR_SAURY_IP}}:5055
+        server: saury # Docker server defined in docker.yaml
+        container: overseerr
+        widget:
+            type: overseerr
+            url: http://{{HOMEPAGE_VAR_SAURY_IP}}:5055
+            key: {{HOMEPAGE_VAR_OVERSEERR_KEY}}
+    - Radarr:
+        icon: radarr.png
+        href: https://radarr.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: http://{{HOMEPAGE_VAR_LEVI_IP}}:7878
+        server: leviathan # Docker server defined in docker.yaml
+        container: radarr
+        widget:
+            type: radarr
+            url: http://{{HOMEPAGE_VAR_LEVI_IP}}:7878
+            key: {{HOMEPAGE_VAR_RADARR_KEY}}
+            enableQueue: false
+    - Sonarr:
+        icon: sonarr.png
+        href: https://sonarr.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: http://{{HOMEPAGE_VAR_LEVI_IP}}:8989
+        server: leviathan # Docker server defined in docker.yaml
+        container: sonarr
+        widget:
+            type: sonarr
+            url: http://{{HOMEPAGE_VAR_LEVI_IP}}:8989
+            key: {{HOMEPAGE_VAR_SONARR_KEY}}
+            enableQueue: false
+
+- Services:
+    - Speedtest:
+        icon: speedtest-tracker.png
+        href: http://{{HOMEPAGE_VAR_RPI01_HOSTNAME}}:8080/admin/login
+        server: rpi-01 # Docker server defined in docker.yaml
+        container: speedtest-tracker
+        widget:
+            type: speedtest
+            url: http://{{HOMEPAGE_VAR_RPI01_IP}}:8080
+    - Gluetun:
+        icon: pia.png
+        server: leviathan # Docker server defined in docker.yaml
+        container: gluetun
+        widget:
+            type: gluetun
+            url: http://{{HOMEPAGE_VAR_LEVI_IP}}:8000
+    - qBittorrent:
+        icon: qbittorrent.png
+        href: http://{{HOMEPAGE_VAR_LEVI_HOSTNAME}}:8090
+        server: leviathan # Docker server defined in docker.yaml
+        container: qbittorrent
+        widget:
+            type: qbittorrent
+            url: http://{{HOMEPAGE_VAR_LEVI_IP}}:8090
+            username: {{HOMEPAGE_VAR_QBIT_UN}}
+            password: {{HOMEPAGE_VAR_QBIT_PW}}
+    - Sabnzbd:
+        icon: sabnzbd.png
+        href: http://{{HOMEPAGE_VAR_LEVI_HOSTNAME}}:8080
+        server: leviathan # Docker server defined in docker.yaml
+        container: sabnzbd
+        widget:
+            type: sabnzbd
+            url: http://{{HOMEPAGE_VAR_LEVI_IP}}:8080
+            key: {{HOMEPAGE_VAR_SABNZBD_KEY}}
+
+- More Services:
+    - Bazarr:
+        icon: bazarr.png
+        href: http://{{HOMEPAGE_VAR_LEVI_HOSTNAME}}:6767
+        server: leviathan # Docker server defined in docker.yaml
+        container: bazarr
+    - Changedetection.io:
+        icon: changedetection-io.png
+        href: https://changedetection.{{HOMEPAGE_VAR_DOMAIN}}/
+        server: saury # Docker server defined in docker.yaml
+        container: changedetection
+    - Cockpit:
+        icon: cockpit.png
+        href: https://cockpit.{{HOMEPAGE_VAR_DOMAIN}}/
+        siteMonitor: https://{{HOMEPAGE_VAR_RPI01_IP}}:9090
+        statusStyle: 'dot'
+    - Code-Server:
+        icon: code-server.png
+        href: https://code.{{HOMEPAGE_VAR_DOMAIN}}/
+        server: saury # Docker server defined in docker.yaml
+        container: code-server
+    - CUPS:
+        icon: cups-light.png
+        href: https://{{HOMEPAGE_VAR_POTATO_HOSTNAME}}:631/
+        server: potato # Docker server defined in docker.yaml
+        container: cups
+    - Guacamole:
+        icon: guacamole.png
+        href: https://guac.{{HOMEPAGE_VAR_DOMAIN}}/
+        server: saury # Docker server defined in docker.yaml
+        container: guacamole
+    - Homebridge:
+        icon: homebridge.png
+        href: https://homebridge.{{HOMEPAGE_VAR_DOMAIN}}
+        # description: 
+        # siteMonitor: http://{{HOMEPAGE_VAR_RPI01_IP}}:8581
+        server: rpi-01 # Docker server defined in docker.yaml
+        container: homebridge
+        # widget:
+            # type: homebridge
+            # url: http://{{HOMEPAGE_VAR_RPI01_IP}}:8581
+            # username: {{HOMEPAGE_VAR_HOMEBRIDGE_UN}}
+            # password: {{HOMEPAGE_VAR_HOMEBRIDGE_PW}}
+    - Jackett:
+        icon: jackett.png
+        href: http://{{HOMEPAGE_VAR_LEVI_HOSTNAME}}:9117
+        server: leviathan # Docker server defined in docker.yaml
+        container: jackett
+    - LibreSpeed:
+        icon: librespeed.png
+        href: https://speed.{{HOMEPAGE_VAR_DOMAIN}}/
+        server: saury # Docker server defined in docker.yaml
+        container: librespeed
+    - Proxmox Backup:
+        icon: proxmox.png
+        href: https://pbs.{{HOMEPAGE_VAR_DOMAIN}}
+        # description: Backup - VM on leviathan
+        siteMonitor: https://{{HOMEPAGE_VAR_PBS_IP}}:8007
+        statusStyle: 'dot'
+        # widget:
+            # type: proxmoxbackupserver
+            # url: https://{{HOMEPAGE_VAR_PBS_IP}}:8007
+            # username: {{HOMEPAGE_VAR_PBS_UN}}
+            # password: {{HOMEPAGE_VAR_PBS_KEY}}
+    - Superset:
+        icon: /icons/superset-mark-dark.svg
+        href: http://{{HOMEPAGE_VAR_SAURY_HOSTNAME}}:8088
+        siteMonitor: http://{{HOMEPAGE_VAR_SAURY_IP}}:8088
+        statusStyle: 'dot'
+    - Transmission:
+        icon: transmission.png
+        href: https://transmission.{{HOMEPAGE_VAR_DOMAIN}}/
+        server: leviathan # Docker server defined in docker.yaml
+        container: transmission-openvpn
+    - Wekan:
+        icon: wekan.png
+        href: https://wekan.{{HOMEPAGE_VAR_DOMAIN}}/
+        server: saury # Docker server defined in docker.yaml
+        container: wekan-app
+
+- Hosts > reef:
+    - Info:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_REEF_IP}}:61208
+            metric: info
+    - Docker:
+        href: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}/#!/14/docker/dashboard
+        siteMonitor: https://{{HOMEPAGE_VAR_RPI01_IP}}:9443
+        statusStyle: 'dot'
+        widget:
+            type: portainer
+            url: https://{{HOMEPAGE_VAR_RPI01_IP}}:9443    
+            env: 14
+            key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
+    - CPU Usage:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_REEF_IP}}:61208
+            metric: cpu
+    - Top Processes:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_REEF_IP}}:61208
+            metric: process
+    - Network Usage:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_REEF_IP}}:61208
+            metric: network:en0
+
+- leviathan:
+    - Info:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_LEVI_IP}}:61208
+            metric: info
+    - Docker:
+        href: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}/#!/6/docker/dashboard
+        siteMonitor: https://{{HOMEPAGE_VAR_LEVI_IP}}:9001
+        statusStyle: 'dot'
+        widget:
+            type: portainer
+            url: https://{{HOMEPAGE_VAR_RPI01_IP}}:9443    
+            env: 6
+            key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
+    - CPU Usage:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_LEVI_IP}}:61208
+            metric: cpu
+    - Top Processes:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_LEVI_IP}}:61208
+            metric: process
+    - Network Usage:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_LEVI_IP}}:61208
+            metric: network:eth0
+
+- saury:
+    - Info:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_SAURY_IP}}:61208
+            metric: info
+    - Docker:
+        href: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}/#!/12/docker/dashboard
+        siteMonitor: https://{{HOMEPAGE_VAR_SAURY_IP}}:9001
+        statusStyle: 'dot'
+        widget:
+            type: portainer
+            url: https://{{HOMEPAGE_VAR_RPI01_IP}}:9443    
+            env: 12
+            key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
+    - CPU Usage:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_SAURY_IP}}:61208
+            metric: cpu
+    - Top Processes:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_SAURY_IP}}:61208
+            metric: process
+    - Network Usage:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_SAURY_IP}}:61208
+            metric: network:eth0
+
+- rpi:
+    - Info:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_RPI01_IP}}:61208
+            metric: info
+    - Docker:
+        href: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}/#!/2/docker/dashboard
+        siteMonitor: https://{{HOMEPAGE_VAR_RPI01_IP}}:9443
+        statusStyle: 'dot'
+        widget:
+            type: portainer
+            url: https://{{HOMEPAGE_VAR_RPI01_IP}}:9443    
+            env: 2
+            key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
+    - CPU Usage:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_RPI01_IP}}:61208
+            metric: cpu
+    - Top Processes:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_RPI01_IP}}:61208
+            metric: process
+    - Network Usage:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_RPI01_IP}}:61208
+            metric: network:eth0
+
+# - potato:
+#     - Info:
+#         widget:
+#             type: glances
+#             url: http://{{HOMEPAGE_VAR_POTATO_IP}}:61208
+#             metric: info
+#     - Docker:
+#         href: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}/#!/13/docker/dashboard
+#         siteMonitor: https://{{HOMEPAGE_VAR_POTATO_IP}}:9001
+#         statusStyle: 'dot'
+#         widget:
+#             type: portainer
+#             url: https://{{HOMEPAGE_VAR_RPI01_IP}}:9443    
+#             env: 13
+#             key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
+#     - CPU Usage:
+#         widget:
+#             type: glances
+#             url: http://{{HOMEPAGE_VAR_POTATO_IP}}:61208
+#             metric: cpu
+#     - Top Processes:
+#         widget:
+#             type: glances
+#             url: http://{{HOMEPAGE_VAR_POTATO_IP}}:61208
+#             metric: process
+#     - Network Usage:
+#         widget:
+#             type: glances
+#             url: http://{{HOMEPAGE_VAR_POTATO_IP}}:61208
+#             metric: network:eth0
+
