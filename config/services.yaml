@@ -200,7 +200,7 @@
             # username: {{HOMEPAGE_VAR_HOMEBRIDGE_UN}}
             # password: {{HOMEPAGE_VAR_HOMEBRIDGE_PW}}
     - Jackett:
-        icon: jackett.png
+        icon: jackett-light.png
         href: http://{{HOMEPAGE_VAR_LEVI_HOSTNAME}}:9117
         server: leviathan # Docker server defined in docker.yaml
         container: jackett
