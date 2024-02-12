@@ -1,0 +1,27 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/service-widgets
+
+- resources:
+    # expanded: true
+    cpu: true
+    memory: true
+    # disk: /
+    cputemp: true
+    uptime: true
+    units: metric # only used by cpu temp
+    refresh: 5000 # optional, in ms
+
+- openweathermap:
+    # label: CH #optional
+    latitude: {{HOMEPAGE_VAR_LAT}}
+    longitude: {{HOMEPAGE_VAR_LON}}
+    units: imperial # or metric
+    provider: openweathermap
+    # apiKey: openweathermap # required only if not using provider, this reveals api key in requests
+    cache: 5 # Time in minutes to cache API responses, to stay within limits
+
+- search:
+    provider: google
+    target: _blank
+

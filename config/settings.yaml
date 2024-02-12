@@ -1,0 +1,47 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/settings
+
+providers:
+  openweathermap: {{HOMEPAGE_VAR_OWM_API}}
+  weatherapi: {{HOMEPAGE_VAR_WEATHER_API}}
+
+# Global settings
+title: {{HOMEPAGE_VAR_TITLE}}
+headerStyle: clean # Possible options are underlined, boxed, clean, and boxedWidgets
+target: _blank # Opens links in a new tab. Possible options include _blank, _self, and _top
+showStats: false # Defaults to showing Docker container stats if defined as services
+# statusStyle: "basic" # Puts a dot in the corner for service status. Other option is basic.
+useEqualHeights: true # Service cards will not match heights by default
+hideVersion: true # Hide version info at the bottom of the page
+
+# Styles
+background: /images/mountains-landscape-dark-nature-4k-i0.jpg
+cardBlur: md # sm, "", md, etc... see https://tailwindcss.com/docs/backdrop-blur
+theme: dark # or light
+color: cyan
+
+quicklaunch:
+  searchDescriptions: true
+  hideInternetSearch: false
+  hideVisitURL: false
+
+fiveColumns: true # Enable ability to have a 5 column layout
+
+# Homepage layout. Sections reflect section names in services.yaml.
+layout:
+  Critical Services:
+    # icon: mdi-cloud
+    style: row
+    columns: 3
+    # useEqualHeights: true # overrides global setting
+  Media:
+    style: row
+    columns: 4
+  Services:
+    style: row
+    columns: 4
+  More Services:
+    header: false
+    style: row
+    columns: 5

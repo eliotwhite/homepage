@@ -1,0 +1,21 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/bookmarks
+
+- Developer:
+    - CloudFlare:
+        - abbr: CF
+          href: https://dash.cloudflare.com/
+    - Github:
+        - abbr: GH
+          href: https://github.com/
+
+- Social:
+    - Reddit:
+        - abbr: RE
+          href: https://reddit.com/
+
+- Entertainment:
+    - YouTube:
+        - abbr: YT
+          href: https://youtube.com/

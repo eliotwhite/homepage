@@ -1,0 +1,22 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/docker/
+ 
+# my-docker:
+#   socket: /var/run/docker.sock
+
+rpi-01:
+  host: {{HOMEPAGE_VAR_RPI01_IP}}
+  port: 2375
+leviathan:
+  host: {{HOMEPAGE_VAR_LEVI_IP}}
+  port: 2376
+reef:
+  host: {{HOMEPAGE_VAR_REEF_IP}}
+  port: 2375
+saury:
+  host: {{HOMEPAGE_VAR_SAURY_IP}}
+  port: 2375
+potato:
+  host: {{HOMEPAGE_VAR_POTATO_IP}}
+  port: 2375
