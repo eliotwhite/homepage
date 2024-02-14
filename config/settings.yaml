@@ -32,6 +32,7 @@ fiveColumns: true # Enable ability to have a 5 column layout
 layout:
   Critical Services:
     # icon: mdi-cloud
+    header: false
     style: row
     columns: 3
     # useEqualHeights: true # overrides global setting
