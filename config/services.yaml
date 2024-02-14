@@ -124,7 +124,7 @@
     - Speedtest:
         icon: speedtest-tracker.png
         href: http://{{HOMEPAGE_VAR_SAURY_HOSTNAME}}:7070/admin/login
-        server: rpi-01 # Docker server defined in docker.yaml
+        server: saury # Docker server defined in docker.yaml
         container: speedtest-tracker
         widget:
             type: speedtest
