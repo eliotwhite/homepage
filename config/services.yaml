@@ -38,7 +38,7 @@
         description: For {{HOMEPAGE_VAR_DOMAIN}} subdomains
         siteMonitor: http://{{HOMEPAGE_VAR_RPI01_IP}}
         server: rpi-01 # Docker server defined in docker.yaml
-        container: nginx-proxy-manager-app-1
+        container: npm-app-1
         widget:
             type: npm
             url: https://{{HOMEPAGE_VAR_DOMAIN}}
@@ -244,11 +244,11 @@
             metric: info
     - Docker:
         href: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}/#!/14/docker/dashboard
-        siteMonitor: https://{{HOMEPAGE_VAR_RPI01_IP}}:9443
+        siteMonitor: https://{{HOMEPAGE_VAR_REEF_IP}}:9001
         statusStyle: 'dot'
         widget:
             type: portainer
-            url: https://{{HOMEPAGE_VAR_RPI01_IP}}:9443    
+            url: https://{{HOMEPAGE_VAR_SAURY_IP}}:9443    
             env: 14
             key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
     - CPU Usage:
@@ -279,7 +279,7 @@
         statusStyle: 'dot'
         widget:
             type: portainer
-            url: https://{{HOMEPAGE_VAR_RPI01_IP}}:9443    
+            url: https://{{HOMEPAGE_VAR_SAURY_IP}}:9443    
             env: 6
             key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
     - CPU Usage:
@@ -305,13 +305,13 @@
             url: http://{{HOMEPAGE_VAR_SAURY_IP}}:61208
             metric: info
     - Docker:
-        href: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}/#!/12/docker/dashboard
-        siteMonitor: https://{{HOMEPAGE_VAR_SAURY_IP}}:9001
+        href: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}/#!/2/docker/dashboard
+        siteMonitor: https://{{HOMEPAGE_VAR_SAURY_IP}}:9443
         statusStyle: 'dot'
         widget:
             type: portainer
-            url: https://{{HOMEPAGE_VAR_RPI01_IP}}:9443    
-            env: 12
+            url: https://{{HOMEPAGE_VAR_SAURY_IP}}:9443    
+            env: 2
             key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
     - CPU Usage:
         widget:
@@ -336,13 +336,13 @@
             url: http://{{HOMEPAGE_VAR_RPI01_IP}}:61208
             metric: info
     - Docker:
-        href: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}/#!/2/docker/dashboard
-        siteMonitor: https://{{HOMEPAGE_VAR_RPI01_IP}}:9443
+        href: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}/#!/15/docker/dashboard
+        siteMonitor: https://{{HOMEPAGE_VAR_RPI01_IP}}:9001
         statusStyle: 'dot'
         widget:
             type: portainer
-            url: https://{{HOMEPAGE_VAR_RPI01_IP}}:9443    
-            env: 2
+            url: https://{{HOMEPAGE_VAR_SAURY_IP}}:9443    
+            env: 15
             key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
     - CPU Usage:
         widget:
