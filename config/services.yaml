@@ -123,12 +123,12 @@
 - Services:
     - Speedtest:
         icon: speedtest-tracker.png
-        href: http://{{HOMEPAGE_VAR_RPI01_HOSTNAME}}:8080/admin/login
+        href: http://{{HOMEPAGE_VAR_SAURY_HOSTNAME}}:7070/admin/login
         server: rpi-01 # Docker server defined in docker.yaml
         container: speedtest-tracker
         widget:
             type: speedtest
-            url: http://{{HOMEPAGE_VAR_RPI01_IP}}:8080
+            url: http://{{HOMEPAGE_VAR_SAURY_IP}}:7070
     - Gluetun:
         icon: pia.png
         server: leviathan # Docker server defined in docker.yaml
@@ -192,7 +192,7 @@
         href: https://homebridge.{{HOMEPAGE_VAR_DOMAIN}}
         # description: 
         # siteMonitor: http://{{HOMEPAGE_VAR_RPI01_IP}}:8581
-        server: rpi-01 # Docker server defined in docker.yaml
+        server: saury # Docker server defined in docker.yaml
         container: homebridge
         # widget:
             # type: homebridge
