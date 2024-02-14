@@ -2,15 +2,27 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/latest/configs/service-widgets
 
-- resources:
-    # expanded: true
-    cpu: true
-    memory: true
-    # disk: /
-    cputemp: true
-    uptime: true
-    units: metric # only used by cpu temp
-    refresh: 5000 # optional, in ms
+# - resources:
+#     # expanded: true
+#     cpu: true
+#     memory: true
+#     # disk: /
+#     cputemp: true
+#     uptime: true
+#     units: metric # only used by cpu temp
+#     refresh: 5000 # optional, in ms
+
+- glances:
+    url: http://{{HOMEPAGE_VAR_SAURY_IP}}:61208
+    # username: user # optional if auth enabled in Glances
+    # password: pass # optional if auth enabled in Glances
+    cpu: true # optional, enabled by default, disable by setting to false
+    mem: true # optional, enabled by default, disable by setting to false
+    cputemp: true # disabled by default
+    uptime: true # disabled by default
+    disk: / # disabled by default, use mount point of disk(s) in glances. Can also be a list (see below)
+    # expanded: true # show the expanded view
+    # label: MyMachine # optional
 
 - openweathermap:
     # label: CH #optional
