@@ -68,14 +68,14 @@
             volume: volume_1 # optional
     - Uptime Kuma:
         icon: uptime-kuma.png
-        href: http://{{HOMEPAGE_VAR_RPI-01_HOSTNAME}}:3001/dashboard
+        href: http://{{HOMEPAGE_VAR_RPI01_HOSTNAME}}:3001/dashboard
         description: Service status - Raspberry Pi 4 8GB Model B
-        siteMonitor: http://{{HOMEPAGE_VAR_RPI-01_IP}}:3001
+        siteMonitor: http://{{HOMEPAGE_VAR_RPI01_IP}}:3001
         server: rpi-01 # Docker server defined in docker.yaml
         container: uptime-kuma
         widget:
             type: uptimekuma
-            url: http://{{HOMEPAGE_VAR_RPI-01_IP}}:3001
+            url: http://{{HOMEPAGE_VAR_RPI01_IP}}:3001
             slug: ocean
 
 - Media:
