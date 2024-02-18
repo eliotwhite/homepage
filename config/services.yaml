@@ -36,9 +36,9 @@
         icon: nginx-proxy-manager.png
         href: https://{{HOMEPAGE_VAR_DOMAIN}}
         description: For {{HOMEPAGE_VAR_DOMAIN}} subdomains
-        siteMonitor: http://{{HOMEPAGE_VAR_RPI01_IP}}
-        server: rpi-01 # Docker server defined in docker.yaml
-        container: npm-app-1
+        siteMonitor: http://{{HOMEPAGE_VAR_SAURY_IP}}
+        server: saury # Docker server defined in docker.yaml
+        container: npm-app
         widget:
             type: npm
             url: https://{{HOMEPAGE_VAR_DOMAIN}}
