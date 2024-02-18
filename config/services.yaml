@@ -179,8 +179,8 @@
         container: code-server
     - CUPS:
         icon: cups-light.png
-        href: https://{{HOMEPAGE_VAR_POTATO_HOSTNAME}}:631/
-        server: potato # Docker server defined in docker.yaml
+        href: https://{{HOMEPAGE_VAR_RPI01_HOSTNAME}}:631/
+        server: rpi-01 # Docker server defined in docker.yaml
         container: cups
     - Guacamole:
         icon: guacamole.png
