@@ -90,12 +90,12 @@
     - Overseerr:
         icon: overseerr.png
         href: https://overseerr.{{HOMEPAGE_VAR_DOMAIN}}
-        siteMonitor: http://{{HOMEPAGE_VAR_SAURY_IP}}:5055
+        siteMonitor: http://overseerr:5055
         server: saury # Docker server defined in docker.yaml
         container: overseerr
         widget:
             type: overseerr
-            url: http://{{HOMEPAGE_VAR_SAURY_IP}}:5055
+            url: http://overseerr:5055
             key: {{HOMEPAGE_VAR_OVERSEERR_KEY}}
     - Radarr:
         icon: radarr.png
@@ -125,10 +125,10 @@
         icon: speedtest-tracker.png
         href: https://speedtest.{{HOMEPAGE_VAR_DOMAIN}}/admin/login
         server: saury # Docker server defined in docker.yaml
-        container: speedtest-tracker
+        container: stt-app
         widget:
             type: speedtest
-            url: http://{{HOMEPAGE_VAR_SAURY_IP}}:7070
+            url: http://speedtest-tracker:80
     - Gluetun:
         icon: pia.png
         server: leviathan # Docker server defined in docker.yaml
