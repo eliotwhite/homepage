@@ -254,7 +254,7 @@
     - Watchtower:
         widget:
             type: watchtower
-            url: http://{{HOMEPAGE_VAR_REEF_HOSTNAME}}:8081
+            url: http://{{HOMEPAGE_VAR_REEF_HOSTNAME}}:8080
             key: {{HOMEPAGE_VAR_WATCHTOWER_KEY}}
     - CPU Usage:
         widget:
@@ -290,7 +290,7 @@
     - Watchtower:
         widget:
             type: watchtower
-            url: http://{{HOMEPAGE_VAR_LEVI_HOSTNAME}}:8081
+            url: http://{{HOMEPAGE_VAR_LEVI_HOSTNAME}}:8080
             key: {{HOMEPAGE_VAR_WATCHTOWER_KEY}}
     - CPU Usage:
         widget:
