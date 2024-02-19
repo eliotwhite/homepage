@@ -236,41 +236,41 @@
         server: saury # Docker server defined in docker.yaml
         container: wekan-app
 
-- Hosts > reef:
+- Hosts > saury:
     - Info:
         widget:
             type: glances
-            url: http://{{HOMEPAGE_VAR_REEF_IP}}:61208
+            url: http://{{HOMEPAGE_VAR_SAURY_IP}}:61208
             metric: info
     - Docker:
-        href: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}/#!/14/docker/dashboard
-        siteMonitor: https://{{HOMEPAGE_VAR_REEF_IP}}:9001
+        href: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}/#!/2/docker/dashboard
+        siteMonitor: https://{{HOMEPAGE_VAR_SAURY_IP}}:9443
         statusStyle: 'dot'
         widget:
             type: portainer
             url: https://{{HOMEPAGE_VAR_SAURY_IP}}:9443    
-            env: 14
+            env: 2
             key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
     - Watchtower:
         widget:
             type: watchtower
-            url: http://{{HOMEPAGE_VAR_REEF_HOSTNAME}}:8080
+            url: http://watchtower:8080
             key: {{HOMEPAGE_VAR_WATCHTOWER_KEY}}
     - CPU Usage:
         widget:
             type: glances
-            url: http://{{HOMEPAGE_VAR_REEF_IP}}:61208
+            url: http://{{HOMEPAGE_VAR_SAURY_IP}}:61208
             metric: cpu
     - Top Processes:
         widget:
             type: glances
-            url: http://{{HOMEPAGE_VAR_REEF_IP}}:61208
+            url: http://{{HOMEPAGE_VAR_SAURY_IP}}:61208
             metric: process
     - Network Usage:
         widget:
             type: glances
-            url: http://{{HOMEPAGE_VAR_REEF_IP}}:61208
-            metric: network:en0
+            url: http://{{HOMEPAGE_VAR_SAURY_IP}}:61208
+            metric: network:eth0
 
 - leviathan:
     - Info:
@@ -308,42 +308,6 @@
             url: http://{{HOMEPAGE_VAR_LEVI_IP}}:61208
             metric: network:eth0
 
-- saury:
-    - Info:
-        widget:
-            type: glances
-            url: http://{{HOMEPAGE_VAR_SAURY_IP}}:61208
-            metric: info
-    - Docker:
-        href: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}/#!/2/docker/dashboard
-        siteMonitor: https://{{HOMEPAGE_VAR_SAURY_IP}}:9443
-        statusStyle: 'dot'
-        widget:
-            type: portainer
-            url: https://{{HOMEPAGE_VAR_SAURY_IP}}:9443    
-            env: 2
-            key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
-    - Watchtower:
-        widget:
-            type: watchtower
-            url: http://watchtower:8080
-            key: {{HOMEPAGE_VAR_WATCHTOWER_KEY}}
-    - CPU Usage:
-        widget:
-            type: glances
-            url: http://{{HOMEPAGE_VAR_SAURY_IP}}:61208
-            metric: cpu
-    - Top Processes:
-        widget:
-            type: glances
-            url: http://{{HOMEPAGE_VAR_SAURY_IP}}:61208
-            metric: process
-    - Network Usage:
-        widget:
-            type: glances
-            url: http://{{HOMEPAGE_VAR_SAURY_IP}}:61208
-            metric: network:eth0
-
 - rpi:
     - Info:
         widget:
@@ -379,6 +343,42 @@
             type: glances
             url: http://{{HOMEPAGE_VAR_RPI01_IP}}:61208
             metric: network:eth0
+
+- reef:
+    - Info:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_REEF_IP}}:61208
+            metric: info
+    - Docker:
+        href: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}/#!/14/docker/dashboard
+        siteMonitor: https://{{HOMEPAGE_VAR_REEF_IP}}:9001
+        statusStyle: 'dot'
+        widget:
+            type: portainer
+            url: https://{{HOMEPAGE_VAR_SAURY_IP}}:9443    
+            env: 14
+            key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
+    - Watchtower:
+        widget:
+            type: watchtower
+            url: http://{{HOMEPAGE_VAR_REEF_HOSTNAME}}:8080
+            key: {{HOMEPAGE_VAR_WATCHTOWER_KEY}}
+    - CPU Usage:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_REEF_IP}}:61208
+            metric: cpu
+    - Top Processes:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_REEF_IP}}:61208
+            metric: process
+    - Network Usage:
+        widget:
+            type: glances
+            url: http://{{HOMEPAGE_VAR_REEF_IP}}:61208
+            metric: network:en0
 
 # - potato:
 #     - Info:
