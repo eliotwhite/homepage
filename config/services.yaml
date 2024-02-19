@@ -222,9 +222,9 @@
             # password: {{HOMEPAGE_VAR_PBS_KEY}}
     - Superset:
         icon: /icons/superset-mark-dark.svg
-        href: http://{{HOMEPAGE_VAR_SAURY_HOSTNAME}}:8088
-        siteMonitor: http://{{HOMEPAGE_VAR_SAURY_IP}}:8088
-        statusStyle: 'dot'
+        href: https://superset.{{HOMEPAGE_VAR_DOMAIN}}
+        server: saury # Docker server defined in docker.yaml
+        container: superset-app
     - Transmission:
         icon: transmission.png
         href: https://transmission.{{HOMEPAGE_VAR_DOMAIN}}/
