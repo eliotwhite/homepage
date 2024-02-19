@@ -251,6 +251,11 @@
             url: https://{{HOMEPAGE_VAR_SAURY_IP}}:9443    
             env: 14
             key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
+    - Watchtower:
+        widget:
+            type: watchtower
+            url: http://watchtower:8080
+            key: {{HOMEPAGE_VAR_WATCHTOWER_KEY}}
     - CPU Usage:
         widget:
             type: glances
@@ -313,6 +318,11 @@
             url: https://{{HOMEPAGE_VAR_SAURY_IP}}:9443    
             env: 2
             key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
+    - Watchtower:
+        widget:
+            type: watchtower
+            url: http://watchtower:8080
+            key: {{HOMEPAGE_VAR_WATCHTOWER_KEY}}
     - CPU Usage:
         widget:
             type: glances
@@ -344,6 +354,11 @@
             url: https://{{HOMEPAGE_VAR_SAURY_IP}}:9443    
             env: 15
             key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
+    - Watchtower:
+        widget:
+            type: watchtower
+            url: http://watchtower:8080
+            key: {{HOMEPAGE_VAR_WATCHTOWER_KEY}}
     - CPU Usage:
         widget:
             type: glances
