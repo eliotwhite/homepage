@@ -254,7 +254,7 @@
     - Watchtower:
         widget:
             type: watchtower
-            url: http://{{HOMEPAGE_VAR_SAURY_HOSTNAME}}:8080
+            url: http://{{HOMEPAGE_VAR_REEF_HOSTNAME}}:8081
             key: {{HOMEPAGE_VAR_WATCHTOWER_KEY}}
     - CPU Usage:
         widget:
@@ -287,6 +287,11 @@
             url: https://{{HOMEPAGE_VAR_SAURY_IP}}:9443    
             env: 6
             key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
+    - Watchtower:
+        widget:
+            type: watchtower
+            url: http://{{HOMEPAGE_VAR_LEVI_HOSTNAME}}:8081
+            key: {{HOMEPAGE_VAR_WATCHTOWER_KEY}}
     - CPU Usage:
         widget:
             type: glances
@@ -357,7 +362,7 @@
     - Watchtower:
         widget:
             type: watchtower
-            url: http://{{HOMEPAGE_VAR_SAURY_HOSTNAME}}:8080
+            url: http://{{HOMEPAGE_VAR_RPI01_HOSTNAME}}:8080
             key: {{HOMEPAGE_VAR_WATCHTOWER_KEY}}
     - CPU Usage:
         widget:
