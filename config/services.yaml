@@ -321,7 +321,7 @@
     - Watchtower:
         widget:
             type: watchtower
-            url: http://{{HOMEPAGE_VAR_SAURY_HOSTNAME}}:8080
+            url: http://watchtower:8080
             key: {{HOMEPAGE_VAR_WATCHTOWER_KEY}}
     - CPU Usage:
         widget:
