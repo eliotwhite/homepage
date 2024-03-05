@@ -9,7 +9,7 @@ providers:
 # Global settings
 title: {{HOMEPAGE_VAR_TITLE}}
 headerStyle: clean # Possible options are underlined, boxed, clean, and boxedWidgets
-target: _blank # Opens links in a new tab. Possible options include _blank, _self, and _top
+target: _self # Opens links in a new tab. Possible options include _blank, _self, and _top
 showStats: false # Defaults to showing Docker container stats if defined as services
 # statusStyle: "basic" # Puts a dot in the corner for service status. Other option is basic.
 useEqualHeights: true # Service cards will not match heights by default
